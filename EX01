@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+//Crie uma struct chamada Circulo com o campo "raio".
+//Escreva uma função que receba um Circulo como parâmetro e calcule a área do círculo (área = pi * raio * raio).
+//Dica: use a constante math.Pi para representar o número pi.
+
+type Circulo struct {
+	raio float64
+}
+
+func AreaCirculo(c Circulo) float64 {
+	area := c.raio * c.raio * math.Pi
+	return area
+}
+
+func main() {
+	c := Circulo{raio: 2}
+	resultado := AreaCirculo(c)
+	fmt.Println(resultado)
+}
