@@ -1,0 +1,43 @@
+package main
+
+import "fmt"
+
+//Crie uma struct chamada Pessoa com os campos "nome", "idade" e "endereço".
+//O campo "endereço" deve ser uma outra struct com os campos "rua", "número", "cidade" e "estado".
+//Escreva uma função que receba uma Pessoa como parâmetro e imprima seu endereço completo.
+
+type Pessoa struct {
+	nome     string
+	idade    int
+	endereço Endereço
+}
+type Endereço struct {
+	rua    string
+	número string
+	cidade string
+	estado string
+}
+
+func Dados(p Pessoa) {
+
+	fmt.Println(p)
+}
+
+func main() {
+	p := Pessoa{
+
+		nome: "João",
+
+		idade: 30,
+		endereço: Endereço{
+			rua: "Rua X",
+
+			número: "24",
+
+			cidade: "São Paulo",
+
+			estado: "SP",
+		},
+	}
+	Dados(p)
+}
