@@ -8,22 +8,47 @@ import "fmt"
 //Escreva uma função que receba uma Playlist como parâmetro
 //e imprima o nome da playlist, o tempo total da playlist e as informações de cada música.
 
+type musicas1 struct {
+	titulo  string
+	artista string
+	duracao int
+}
+
 type Playlist struct {
 	nome    string
-	musicas []string
+	musicas []musicas1
 }
 
 func Music(p Playlist) {
-	fmt.Println(p)
+	fmt.Println(p.nome)
+	var total int
+	for _, musicas := range p.musicas {
+		total += musicas.duracao
+	}
+	fmt.Printf("A playlist %s tem %d:%d", p.nome, total/60, total%60)
+	for _, musicas := range p.musicas {
+		fmt.Printf("A musica %s do artista %s tem %d:%d\n", musicas.titulo, musicas.artista, musicas.duracao/60, musicas.duracao%60)
+	}
 }
 
 func main() {
 	p := Playlist{
-		nome: "alfabeto",
-		musicas: []string{
-			"titulo : abc",
-			"artista: wagner",
-			"duração: 3:23",
+		nome: "Sargent Pappers",
+		musicas: []musicas1{{
+			titulo:  "I wanna hold your hand",
+			artista: "The Beatles",
+			duracao: 200,
+		},
+			{
+				titulo:  "Help",
+				artista: "The Beatles",
+				duracao: 250,
+			},
+			{
+				titulo:  "Hey Jude",
+				artista: "The Beatles",
+				duracao: 300,
+			},
 		},
 	}
 	Music(p)
