@@ -15,20 +15,20 @@ type Filme struct {
 }
 
 func main() {
-f := Filme{
-	Titulo:  "Matrix",
-	Diretor: "Robertão",
-	Ano:     1997,
-}
-		
-	f = AdiocionarAvaliacao(f, , 5)
-	f = AdiocionarAvaliacao(f,  5)
-	f = AdiocionarAvaliacao(f,  5)
-	f = AdiocionarAvaliacao(f,  5)
-	
-	fmt.Println(f)
-}
+	f := Filme{
+		Titulo:  "Matrix",
+		Diretor: "Robertão",
+		Ano:     1997,
+	}
 
+	f = AdiocionarAvaliacao(f, 5)
+	f = AdiocionarAvaliacao(f, 10)
+	f = AdiocionarAvaliacao(f, 8)
+	f = AdiocionarAvaliacao(f, 7)
+
+	fmt.Println(f)
+	
+}
 
 func AdiocionarAvaliacao(f Filme, nota int) Filme {
 	f.Avaliacoes = append(f.Avaliacoes, nota)
