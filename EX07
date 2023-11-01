@@ -1,0 +1,58 @@
+package main
+
+import "fmt"
+
+//Crie uma struct chamada Animal com os campos "nome", "espécie", "idade" e "som".
+//Escreva funções que permitam modificar o som que o animal faz
+//e uma função que imprima as informações do animal
+//e o som que ele faz.
+
+type Animal struct {
+	Nome    string
+	Espécie string
+	Idade   int
+	som     string
+}
+
+func ChangeSound(a Animal, NewSound string) Animal {
+	//não precisa usar switch case, mas eu queria entender como funciona
+	switch a.som {
+	case "Oink":
+		a.som = NewSound
+	case "Moo":
+		a.som = NewSound
+	case "pó":
+		a.som = NewSound
+	}
+	return a
+}
+
+func DadosAnima(a Animal) {
+	fmt.Println(a)
+}
+
+func main() {
+	p := Animal{
+		Nome:    "porco",
+		Espécie: "Selvagem",
+		Idade:   3,
+		som:     "Oink",
+	}
+	v := Animal{
+		Nome:    "Vaca",
+		Espécie: "Gado Bovino",
+		Idade:   7,
+		som:     "Moo",
+	}
+	g := Animal{
+		Nome:    "Galinha",
+		Espécie: "galinha de angola",
+		Idade:   2,
+		som:     "pó",
+	}
+	fmt.Println(p, v, g)
+	p = ChangeSound(p, "Oink")
+	v = ChangeSound(v, "MOOOOOOOOOO")
+	g = ChangeSound(g, "PÓOOO")
+	fmt.Println(p, v, g)
+}
