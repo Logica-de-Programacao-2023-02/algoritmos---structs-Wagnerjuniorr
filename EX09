@@ -1,0 +1,49 @@
+package main
+
+import "fmt"
+
+//Crie uma struct chamada Aluno com os campos "nome", "idade" e "notas".
+//O campo "notas" deve ser um slice de float64,
+//representando as notas que o aluno tirou em uma determinada disciplina.
+//Escreva funções que permitam adicionar ou remover notas do aluno
+//calcular a média das notas e imprimir o nome, idade e média do aluno.
+
+type Aluno struct {
+	nome  string
+	idade int
+	notas []float64
+}
+
+func main() {
+	a := Aluno{
+		nome:  "wagner",
+		idade: 18,
+		notas: []float64{10, 10, 9.1, 8.8, 10, 10, 9.5, 7},
+	}
+
+	fmt.Printf("A média é %0.2f\n", Média(a))
+	DadosAlunos(a)
+	fmt.Println(ApenasNotasAcimaDaMedia(a))
+}
+
+func ApenasNotasAcimaDaMedia(a Aluno) Aluno {
+	media := 7.5
+	for i := 0; i < len(a.notas); i++ {
+		if a.notas[i] < media {
+			a.notas = append(a.notas[:i], a.notas[i+1:]...)
+		}
+	}
+	return a
+}
+
+func Média(a Aluno) float64 {
+	var x float64
+	for i := 0; i < len(a.notas); i++ {
+		x += a.notas[i]
+	}
+	x /= float64(len(a.notas))
+	return x
+}
+func DadosAlunos(a Aluno) {
+	fmt.Printf("O aluno %s que tem %d anos tirou as notas %0.1f\n", a.nome, a.idade, a.notas)
+}
