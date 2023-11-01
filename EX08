@@ -1,0 +1,45 @@
+package main
+
+import "fmt"
+
+//Crie uma struct chamada Viagem com os campos "origem", "destino", "data" e "preço".
+//Escreva uma função que receba um slice de Viagens como parâmetro e retorne a viagem mais cara.
+
+type Viagem struct {
+	origem  string
+	destino string
+	data    string
+	preço   float64
+}
+
+func MostExpensive(v []Viagem) {
+	x := 0.0
+	for _, p := range v {
+		if p.preço > x {
+			x = p.preço
+		}
+	}
+
+	fmt.Println(x)
+}
+
+func main() {
+
+	v := []Viagem{
+		{
+			origem:  "paris",
+			destino: "londres",
+			data:    "11 de março",
+			preço:   1000,
+		},
+		{
+			origem:  "londres",
+			destino: "paris",
+			data:    "12 de março",
+			preço:   1200,
+		},
+	}
+
+	MostExpensive(v)
+
+}
